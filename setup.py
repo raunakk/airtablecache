@@ -28,5 +28,6 @@ setuptools.setup(
     ],
     package_data={'airtablecache': ['data/testData.csv']},
     python_requires='>=3.6',
-    license='MIT'
+    license='MIT',
+    url="https://github.com/raunakk/airtablecache"
 )
