@@ -129,7 +129,7 @@ class AirtableCache:
         self.cacheObj = Cacher(cacheType, **kwargs)
 
     def getData(self):
-        records = self.atObj.get_all(**self.kwargs)
+        records = self.atObj.get_all(**self.atGetAllArgs)
         df = pd.DataFrame.from_dict([x['fields'] for x in records])
         return df
 
