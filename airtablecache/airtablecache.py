@@ -133,9 +133,13 @@ class AirtableCache:
         df = pd.DataFrame.from_dict([x['fields'] for x in records])
         return df
 
-    def storeData(self):
-        df = self.getData()
+    def processData(self, df: pd.DataFrame):
         if self.kwargs.get("processDataFunc", None) is not None:
             df = self.kwargs.get("processDataFunc", None)(df, self.kwargs.get("processDataContext", {}))
+        return df
+
+    def storeData(self):
+        df = self.getData()
+        df = self.processData(df)
         df = self.cacheObj.combineWithExistingData(df)
         self.cacheObj.storeData(df)
