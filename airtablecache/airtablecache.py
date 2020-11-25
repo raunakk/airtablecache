@@ -106,7 +106,7 @@ class Cacher:
 
     def storeCSV(self, df: pd.DataFrame):
         storeLoc = self.kwargs.get('writeLoc', self.kwargs['location'])
-        df.to_csv(storeLoc)
+        df.to_csv(storeLoc, index=False)
 
     def storeGSheet(self, df: pd.DataFrame):
         self.initializeGoogleServiceAcc()
